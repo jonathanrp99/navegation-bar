@@ -2,7 +2,7 @@
   <div>
     <section>
       <div>
-        <h4>HI</h4>
+        <h4>Hello there</h4>
         <hr />
         <hr />
       </div>
