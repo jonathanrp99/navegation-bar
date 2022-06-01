@@ -1,9 +1,12 @@
 <template>
-  <div>
+  <div class="home">
     <section>
       <div>
-        <h4>Hello there</h4>
+        <h4>Vue Navbar</h4>
         <hr />
+        <h2>
+          Hello there <br />
+        </h2>
         <hr />
       </div>
     </section>
@@ -18,6 +21,6 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 
 </style>
