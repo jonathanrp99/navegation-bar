@@ -1,3 +1,5 @@
+<!-- this component requires variable.css and a fontawesome link to work, copy the link in public/html and the css file to make it work -->
+
 <template>
    <header>
    <nav class="nav-header">
@@ -28,7 +30,6 @@
      </transition>
    </nav>
    </header>
-   <router-view />
 </template>
 
 
