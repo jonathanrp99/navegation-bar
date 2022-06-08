@@ -29,6 +29,7 @@
       </ul>
      </transition>
    </nav>
+   <router-view />
    </header>
 </template>
 
