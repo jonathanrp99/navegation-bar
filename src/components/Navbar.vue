@@ -22,7 +22,7 @@
      </div>
      <transition name="mobile-nav">
      <ul v-show="mobileNav" class="dropdown-nav">
-        <i class="far fa-times-circle close-icon"></i>
+        <i @click="toggleMobileNav" class="far fa-times-circle close-icon"></i>
         <li><i><router-link class="nav-link" :to="{ Path: 'Home'}">Home</router-link></i></li>
         <li><i><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></i></li>
         <li><i><router-link class="nav-link" :to="{ name: ''}">Porfolio</router-link></i></li>
@@ -192,10 +192,10 @@ i:hover{
   justify-content: center;
   flex-direction: column;
   position: fixed;
-  width: 80vw;
+  width: 70vw;
   height: 100vh;
   background-color: var(--eerie-black-dark);
-  top: 0;
+  top: 8.1%;
   left: 0;
 }
 
@@ -207,6 +207,8 @@ i:hover{
 
 .dropdown-nav li {
   margin-left: 0;
+  display: flex;
+  margin-bottom: 40px;
   color: var(--gainsboro);
 }
 
