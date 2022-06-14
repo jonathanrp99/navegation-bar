@@ -187,16 +187,15 @@ i:hover{
 }
 
 .dropdown-nav{
-
   display: flex;
   justify-content: center;
   flex-direction: column;
   position: fixed;
-  max-width: 250px;
-  height: 100%;
+  width: 80vw;
+  height: 100vh;
   background-color: var(--eerie-black-dark);
   top: 0;
-  right: 0;
+  left: 0;
 }
 
 .dropdown-nav li {
@@ -212,7 +211,7 @@ i:hover{
 .mobile-nav-enter-from,
 .mobile-nav-leave-to 
  {
-  transform: translateX(750px);
+  transform: translateX(-450px);
 }
 
 .mobile-nav-enter-to {
