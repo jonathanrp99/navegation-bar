@@ -1,5 +1,5 @@
 <!-- this component requires variable.css and a fontawesome link to work, copy the link in public/html and the css file to make it work -->
-
+<!-- Todo add icons to close and to work with in mobile-nav -->
 <template>
    <header>
    <nav class="nav-header">
@@ -22,10 +22,11 @@
      </div>
      <transition name="mobile-nav">
      <ul v-show="mobileNav" class="dropdown-nav">
-        <li><router-link class="nav-link" :to="{ Path: 'Home'}">Home</router-link></li>
-        <li><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></li>
-        <li><router-link class="nav-link" :to="{ name: ''}">Porfolio</router-link></li>
-        <li><router-link class="nav-link" :to="{ name: ''}">Contact</router-link></li>
+        <i class="far fa-times-circle close-icon"></i>
+        <li><i><router-link class="nav-link" :to="{ Path: 'Home'}">Home</router-link></i></li>
+        <li><i><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></i></li>
+        <li><i><router-link class="nav-link" :to="{ name: ''}">Porfolio</router-link></i></li>
+        <li><i><router-link class="nav-link" :to="{ name: ''}">Contact</router-link></i></li>
       </ul>
      </transition>
    </nav>
@@ -196,6 +197,12 @@ i:hover{
   background-color: var(--eerie-black-dark);
   top: 0;
   left: 0;
+}
+
+.dropdown-nav .close-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px; 
 }
 
 .dropdown-nav li {
