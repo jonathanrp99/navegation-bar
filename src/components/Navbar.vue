@@ -23,10 +23,12 @@
      <transition name="mobile-nav">
      <ul v-show="mobileNav" class="dropdown-nav">
         <i @click="toggleMobileNav" class="far fa-times-circle close-icon"></i>
-        <li><i><router-link class="nav-link" :to="{ Path: 'Home'}">Home</router-link></i></li>
-        <li><i><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></i></li>
-        <li><i><router-link class="nav-link" :to="{ name: ''}">Porfolio</router-link></i></li>
-        <li><i><router-link class="nav-link" :to="{ name: ''}">Contact</router-link></i></li>
+        <div class="nav-box">
+          <li><i><router-link class="nav-link" :to="{ Path: 'Home'}">Home</router-link></i></li>
+          <li><i><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></i></li>
+          <li><i><router-link class="nav-link" :to="{ name: ''}">Porfolio</router-link></i></li>
+          <li><i><router-link class="nav-link" :to="{ name: ''}">Contact</router-link></i></li>
+        </div>
       </ul>
      </transition>
    </nav>
@@ -192,12 +194,21 @@ i:hover{
   justify-content: center;
   flex-direction: column;
   position: fixed;
-  width: 70vw;
+  width: 100vw;
   height: 100vh;
-  background-color: var(--eerie-black-dark);
+  background-color: rgba(0, 0, 0, .4);
+  
   top: 8.1%;
   left: 0;
 }
+
+.nav-box {
+  background-color: var(--eerie-black-dark);
+  width: 70vw;
+  height: 100vh;
+}
+
+
 
 .dropdown-nav .close-icon {
   position: absolute;
@@ -214,7 +225,7 @@ i:hover{
 
 .mobile-nav-enter-active,
 .mobile-nav-leave-active{
-  transition: 1s ease all;
+  transition: .5s ease all;
 }
 
 .mobile-nav-enter-from,
