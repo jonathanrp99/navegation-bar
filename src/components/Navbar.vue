@@ -3,9 +3,6 @@
 <template>
    <header>
    <nav class="nav-header">
-     <div class="brand">
-       <img src="../assets/logo.png" alt="" class="logo">
-     </div>
      <ul v-show="!mobile" class="navigation">
         <li><router-link class="nav-link" :to="{ name: 'Home'}">Home</router-link></li>
         <li><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></li>
@@ -22,12 +19,15 @@
      </div>
      <transition name="mobile-nav">
      <ul v-show="mobileNav" class="dropdown-nav">
-        <i @click="toggleMobileNav" class="far fa-times-circle close-icon"></i>
         <div class="nav-box">
-          <li><i><router-link class="nav-link" :to="{ Path: 'Home'}">Home</router-link></i></li>
-          <li><i><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></i></li>
-          <li><i><router-link class="nav-link" :to="{ name: ''}">Porfolio</router-link></i></li>
-          <li><i><router-link class="nav-link" :to="{ name: ''}">Contact</router-link></i></li>
+               <div class="brand">
+                 <img src="../assets/logo.png" alt="" class="logo">
+               </div>
+        <i @click="toggleMobileNav" class="far fa-times-circle close-icon"></i>
+          <li><router-link class="nav-link" :to="{ Path: 'Home'}">Home</router-link></li>
+          <li><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></li>
+          <li><router-link class="nav-link" :to="{ name: ''}">Porfolio</router-link></li>
+          <li><router-link class="nav-link" :to="{ name: ''}">Contact</router-link></li>
         </div>
       </ul>
      </transition>
@@ -102,8 +102,10 @@ header {
   z-index: 100;
   width: 100%;
   position: fixed;
+  height: 10vh;
   transition: .5s ease all;
   color: var(--gainsboro);
+  display: flex;
 }
 
  ul,
@@ -148,7 +150,9 @@ header {
 
 .brand {
   display: flex;
-  align-items: center;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
 }
 
 .navigation {
@@ -168,7 +172,7 @@ img {
   align-items: center;
   position: absolute;
   top: 0;
-  right: 24px;
+  left: 24px;
   height: 100%;
   color: var(--gainsboro);
 }
@@ -177,7 +181,6 @@ i {
   cursor: pointer;
   font-size: 24px;
   transition: 1s ease all;
-  z-index: 100;
 }
 i:hover{
    color: var(--brilliant-green);
@@ -198,7 +201,7 @@ i:hover{
   height: 100vh;
   background-color: rgba(0, 0, 0, .4);
   
-  top: 8.1%;
+  top: 0;
   left: 0;
 }
 
@@ -217,8 +220,9 @@ i:hover{
 }
 
 .dropdown-nav li {
-  margin-left: 0;
   display: flex;
+  flex-direction: columns;
+  justify-content: space-between;
   margin-bottom: 40px;
   color: var(--gainsboro);
 }
