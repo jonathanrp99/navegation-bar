@@ -18,12 +18,13 @@
         </i>
      </div>
      <transition name="mobile-nav">
-     <ul v-show="mobileNav" class="dropdown-nav">
-        <div class="nav-box">
-               <div class="brand">
+       <ul v-show="mobileNav" class="dropdown-nav">
+         <i @click="toggleMobileNav" class="far fa-times-circle close-icon"></i>
+       <div class="nav-box">
+         <div class="brand">
                  <img src="../assets/logo.png" alt="" class="logo">
+                 <h2 class="brand-text">Welcome to this project </h2>
                </div>
-        <i @click="toggleMobileNav" class="far fa-times-circle close-icon"></i>
           <li><router-link class="nav-link" :to="{ Path: 'Home'}">Home</router-link></li>
           <li><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></li>
           <li><router-link class="nav-link" :to="{ name: ''}">Porfolio</router-link></li>
@@ -119,6 +120,7 @@ header {
   li {
       padding: 16px;
       margin-left: 16px;
+    
   }
 
   
@@ -150,9 +152,19 @@ header {
 
 .brand {
   display: flex;
+  padding: 1rem;
   margin-top: 1rem;
   margin-left: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--gainsboro);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
+  font-size: 1rem;
+  justify-content: center;
 }
 
 .navigation {
@@ -179,7 +191,7 @@ img {
 
 i {
   cursor: pointer;
-  font-size: 24px;
+  font-size: 1.5rem;
   transition: 1s ease all;
 }
 i:hover{
@@ -199,15 +211,14 @@ i:hover{
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, .4);
-  
+
   top: 0;
   left: 0;
 }
 
 .nav-box {
   background-color: var(--eerie-black-dark);
-  width: 70vw;
+  width: 100vw;
   height: 100vh;
 }
 
