@@ -24,10 +24,14 @@
                  <img src="../assets/logo.png" alt="" class="logo">
                  <h2 class="brand-text">Welcome to this project </h2>
                </div>
-          <li><router-link class="nav-link" :to="{ name: 'Home'}">Home</router-link></li>
-          <li><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></li>
-          <li><router-link class="nav-link" :to="{ name: 'Porfolio'}">Porfolio</router-link></li>
-          <li><router-link class="nav-link" :to="{ name: 'Contact'}">Contact</router-link></li>
+          <li @click="toggleMobileNav">
+          <router-link class="nav-link" :to="{ name: 'Home'}">Home</router-link></li>
+          <li @click="toggleMobileNav">
+          <router-link class="nav-link" :to="{ name: 'About'}">About</router-link></li>
+          <li @click="toggleMobileNav">
+          <router-link class="nav-link" :to="{ name: 'Porfolio'}">Porfolio</router-link></li>
+          <li @click="toggleMobileNav">
+          <router-link class="nav-link" :to="{ name: 'Contact'}">Contact</router-link></li>
         </div>
       </ul>
      </transition>
