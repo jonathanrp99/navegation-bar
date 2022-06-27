@@ -1,13 +1,12 @@
-<!-- this component requires variable.css and a fontawesome link to work, copy the link in public/html and the css file to make it work -->
-<!-- Todo add icons to close and to work with in mobile-nav -->
+
 <template>
    <header>
    <nav class="nav-header">
      <ul v-show="!mobile" class="navigation">
         <li><router-link class="nav-link" :to="{ name: 'Home'}">Home</router-link></li>
         <li><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></li>
-        <li><router-link class="nav-link" :to="{ name: ''}">Porfolio</router-link></li>
-        <li><router-link class="nav-link" :to="{ name: ''}">Contact</router-link></li>
+        <li><router-link class="nav-link" :to="{ name: 'Porfolio'}">Porfolio</router-link></li>
+        <li><router-link class="nav-link" :to="{ name: 'Contact'}">Contact</router-link></li>
      </ul>
      <div class="icon">
        <i @click="toggleMobileNav" 
@@ -25,10 +24,10 @@
                  <img src="../assets/logo.png" alt="" class="logo">
                  <h2 class="brand-text">Welcome to this project </h2>
                </div>
-          <li><router-link class="nav-link" :to="{ Path: 'Home'}">Home</router-link></li>
+          <li><router-link class="nav-link" :to="{ name: 'Home'}">Home</router-link></li>
           <li><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></li>
-          <li><router-link class="nav-link" :to="{ name: ''}">Porfolio</router-link></li>
-          <li><router-link class="nav-link" :to="{ name: ''}">Contact</router-link></li>
+          <li><router-link class="nav-link" :to="{ name: 'Porfolio'}">Porfolio</router-link></li>
+          <li><router-link class="nav-link" :to="{ name: 'Contact'}">Contact</router-link></li>
         </div>
       </ul>
      </transition>
