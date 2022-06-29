@@ -18,21 +18,22 @@
      </div>
      <transition name="mobile-nav">
        <ul v-show="mobileNav" class="dropdown-nav">
-         <i @click="toggleMobileNav" class="far fa-times-circle close-icon"></i>
+         <i @click="closeMobileNav" class="far fa-times-circle close-icon"></i>
        <div class="nav-box">
          <div class="brand">
                  <img src="../assets/logo.png" alt="" class="logo">
                  <h2 class="brand-text">Welcome to this project </h2>
                </div>
-          <li @click="toggleMobileNav">
-          <router-link class="nav-link" :to="{ name: 'Home'}">Home</router-link></li>
-          <li @click="toggleMobileNav">
-          <router-link class="nav-link" :to="{ name: 'About'}">About</router-link></li>
-          <li @click="toggleMobileNav">
-          <router-link class="nav-link" :to="{ name: 'Porfolio'}">Porfolio</router-link></li>
-          <li @click="toggleMobileNav">
-          <router-link class="nav-link" :to="{ name: 'Contact'}">Contact</router-link></li>
+          <li><router-link class="nav-link" :to="{ name: 'Home'}"
+           @click="closeMobileNav" >Home</router-link></li>
+          <li><router-link class="nav-link" :to="{ name: 'About'}" 
+           @click="closeMobileNav" >About</router-link></li>
+          <li><router-link class="nav-link" :to="{ name: 'Porfolio'}"  
+           @click="closeMobileNav" >Porfolio</router-link></li>
+          <li><router-link class="nav-link" :to="{ name: 'Contact'}" 
+           @click="closeMobileNav" >Contact</router-link></li>
         </div>
+        <div class="whitearea" @click="closeMobileNav"></div>
       </ul>
      </transition>
    </nav>
@@ -58,6 +59,10 @@ export default {
            this.mobileNav = !this.mobileNav;
           },
 
+          closeMobileNav() {
+            this.mobileNav = null;
+          },
+        
           updateScroll() {
             const scrollPosition = window.scrollY;
             if (scrollPosition > 50 ) {
@@ -122,8 +127,7 @@ header {
 
   li {
       padding: 16px;
-      margin-left: 16px;
-    
+      margin-left: 1rem;
   }
 
   
@@ -160,6 +164,12 @@ header {
   margin-left: 1rem;
   margin-bottom: 3rem;
   border-bottom: 1px solid var(--gainsboro);
+  width: 100vw;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
 }
 
 .brand-text {
@@ -202,6 +212,15 @@ i:hover{
     filter: drop-shadow(.25em .25em .9em)   
 }
 
+.whitearea {
+  filter: blur(3.125rem);
+  height: 100vh;
+  width: 20vw;
+  position: absolute;
+  right: 0;
+  background-color: rgba(101, 113, 87, 0.8);
+}
+
 .icon-active {
   color: var(--brilliant-green);
     filter: drop-shadow(.25em .25em .9em) 
@@ -214,14 +233,14 @@ i:hover{
   position: fixed;
   width: 100vw;
   height: 100vh;
-
   top: 0;
   left: 0;
+
 }
 
 .nav-box {
   background-color: var(--eerie-black-dark);
-  width: 100vw;
+  width: 80vw;
   height: 100vh;
 }
 
@@ -241,9 +260,12 @@ i:hover{
   color: var(--gainsboro);
 }
 
-.mobile-nav-enter-active,
-.mobile-nav-leave-active{
+.mobile-nav-enter-active {
   transition: .5s ease all;
+}
+
+.mobile-nav-leave-active {
+   transition: .3s ease all;
 }
 
 .mobile-nav-enter-from,
