@@ -1,43 +1,41 @@
 
 <template>
-   <header>
-   <nav class="nav-header">
-     <ul v-show="!mobile" class="navigation">
+  <header>
+    <nav class="nav-header">
+      <ul v-show="!mobile" class="navigation">
         <li><router-link class="nav-link" :to="{ name: 'Home'}">Home</router-link></li>
         <li><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></li>
         <li><router-link class="nav-link" :to="{ name: 'Porfolio'}">Porfolio</router-link></li>
         <li><router-link class="nav-link" :to="{ name: 'Contact'}">Contact</router-link></li>
-     </ul>
-     <div class="icon">
-       <i @click="toggleMobileNav" 
-        v-show="mobile"
-        class="far fa-bars"
-        :class="{'icon-active' : mobileNav }"
-        >
-        </i>
-     </div>
-     <transition name="mobile-nav">
-       <ul v-show="mobileNav" class="dropdown-nav">
-         <i @click="closeMobileNav" class="far fa-times-circle close-icon"></i>
-       <div class="nav-box">
-         <div class="brand">
-                 <img src="../assets/logo.png" alt="" class="logo">
-                 <h2 class="brand-text">Welcome to this project </h2>
-               </div>
-          <li><router-link class="nav-link" :to="{ name: 'Home'}"
-           @click="closeMobileNav" >Home</router-link></li>
-          <li><router-link class="nav-link" :to="{ name: 'About'}" 
-           @click="closeMobileNav" >About</router-link></li>
-          <li><router-link class="nav-link" :to="{ name: 'Porfolio'}"  
-           @click="closeMobileNav" >Porfolio</router-link></li>
-          <li><router-link class="nav-link" :to="{ name: 'Contact'}" 
-           @click="closeMobileNav" >Contact</router-link></li>
-        </div>
-        <div class="whitearea" @click="closeMobileNav"></div>
       </ul>
-     </transition>
-   </nav>
-   </header>
+      <div class="icon">
+        <i @click="toggleMobileNav" 
+          v-show="mobile"
+          class="far fa-bars"
+          :class="{'icon-active' : mobileNav }"></i>
+      </div>
+      <transition name="mobile-nav">
+        <ul v-show="mobileNav" class="dropdown-nav">
+          <div class="brand">
+            <img src="../assets/logo.png" alt="" class="logo">
+            <h2 class="brand-text">Welcome to this project </h2>
+          </div>
+          <i @click="closeMobileNav" class="far fa-times-circle close-icon"></i>
+          <div class="nav-box">
+            <li><router-link class="nav-link" :to="{ name: 'Home'}"
+            @click="closeMobileNav" >Home</router-link></li>
+            <li><router-link class="nav-link" :to="{ name: 'About'}" 
+            @click="closeMobileNav" >About</router-link></li>
+            <li><router-link class="nav-link" :to="{ name: 'Porfolio'}"  
+            @click="closeMobileNav" >Porfolio</router-link></li>
+            <li><router-link class="nav-link" :to="{ name: 'Contact'}" 
+            @click="closeMobileNav" >Contact</router-link></li>
+         </div>
+         <div class="outsideOfNav" @click="closeMobileNav"></div>
+        </ul>
+      </transition>
+    </nav>
+  </header>
 </template>
 
 
@@ -46,58 +44,57 @@ import { ref } from 'vue';
 
 export default {
   name: "Navigation",
-           created() {
-             window.addEventListener("resize", this.checkScreen);
-             this.checkScreen();
-           },
+  created() {
+    window.addEventListener("resize", this.checkScreen);
+    this.checkScreen();
+    },
 
-           mounted() {
-             window.addEventListener('scroll', this.updateScroll)
-           },
-         methods: {
-           toggleMobileNav() {
-           this.mobileNav = !this.mobileNav;
-          },
+  mounted() {
+  window.addEventListener('scroll', this.updateScroll)
+  },
+  methods: {
+  toggleMobileNav() {
+    this.mobileNav = !this.mobileNav;
+    },
 
-          closeMobileNav() {
-            this.mobileNav = null;
-          },
-        
-          updateScroll() {
-            const scrollPosition = window.scrollY;
-            if (scrollPosition > 50 ) {
-              this.scrolledNav = true
-              return;
-            }
-            this.scrolledNav = false;
-            return;
-          },
+    closeMobileNav() {
+      this.mobileNav = null;
+    },
 
-           checkScreen() {
-           this.windowWidth = window.innerWidth;
-           if (this.windowWidth < 750) {
-             this.mobile = true;
-             return;
-           }
-            this.mobile = false;
-            this.mobileNav = false;
-            return;
-         },
-      
-        },
-        setup() {
-        const mobile = ref(null)
-        const mobileNav = ref(null)
-        const windowWidth = ref(null)
+// updateScroll() {
+//   const scrollPosition = window.scrollY;
+//   if (scrollPosition > 50 ) {
+//     this.scrolledNav = true
+//     return;
+// //   }
+//   this.scrolledNav = false;
+//   return;
+// },
 
-      return {
-           mobile,
-           mobileNav,
-           windowWidth,
-           
-        }
-       }
-      }
+    checkScreen() {
+      this.windowWidth = window.innerWidth;
+      if (this.windowWidth < 750) {
+        this.mobile = true;
+        return;
+    }
+     this.mobile = false;
+     this.mobileNav = false;
+    return;
+},
+
+},
+  setup() {
+    const mobile = ref(null)
+    const mobileNav = ref(null)
+    const windowWidth = ref(null)
+
+    return {
+      mobile,
+      mobileNav,
+      windowWidth,
+   }
+  }
+}
 </script>
 
 
@@ -159,12 +156,20 @@ header {
 
 .brand {
   display: flex;
-  padding: 1rem;
-  margin-top: 1rem;
-  margin-left: 1rem;
-  margin-bottom: 3rem;
   border-bottom: 1px solid var(--gainsboro);
   width: 100vw;
+  height: 10vh;
+  background-color: var(--eerie-black-dark);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.brand img {
+  margin-left: 1rem;
+  margin-top: .5rem;
+  margin-right: 1rem;
+  margin-bottom: .5rem;
 }
 
 body {
@@ -212,12 +217,13 @@ i:hover{
     filter: drop-shadow(.25em .25em .9em)   
 }
 
-.whitearea {
-  filter: blur(3.125rem);
-  height: 100vh;
+.outsideOfNav {
+  filter: blur(7.825rem);
+  height: 90vh;
   width: 20vw;
   position: absolute;
   right: 0;
+  bottom: 0;
   background-color: rgba(101, 113, 87, 0.8);
 }
 
@@ -235,21 +241,26 @@ i:hover{
   height: 100vh;
   top: 0;
   left: 0;
-
 }
 
 .nav-box {
   background-color: var(--eerie-black-dark);
   width: 80vw;
-  height: 100vh;
+  height: 90vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  
 }
 
 
 
 .dropdown-nav .close-icon {
   position: absolute;
-  top: 15px;
-  right: 15px; 
+  color: var(--eerie-black-dark);
+  right: 10vw;
+  top: 10vh;
+  z-index: 1;
 }
 
 .dropdown-nav li {
