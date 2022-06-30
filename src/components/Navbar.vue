@@ -49,49 +49,36 @@ export default {
     this.checkScreen();
     },
 
-  mounted() {
-  window.addEventListener('scroll', this.updateScroll)
-  },
-  methods: {
-  toggleMobileNav() {
-    this.mobileNav = !this.mobileNav;
-    },
-
-    closeMobileNav() {
-      this.mobileNav = null;
-    },
-
-// updateScroll() {
-//   const scrollPosition = window.scrollY;
-//   if (scrollPosition > 50 ) {
-//     this.scrolledNav = true
-//     return;
-// //   }
-//   this.scrolledNav = false;
-//   return;
-// },
-
-    checkScreen() {
-      this.windowWidth = window.innerWidth;
-      if (this.windowWidth < 750) {
-        this.mobile = true;
-        return;
-    }
-     this.mobile = false;
-     this.mobileNav = false;
-    return;
-},
-
-},
   setup() {
     const mobile = ref(null)
     const mobileNav = ref(null)
     const windowWidth = ref(null)
 
+    function toggleMobileNav() {
+    mobileNav.value = !mobileNav.value
+    }
+    function  closeMobileNav() {
+      mobileNav.value = null;
+    }
+    function checkScreen() {
+      windowWidth.value = window.innerWidth;
+      if (windowWidth.value < 750) {
+        mobile.value = true;
+        return;
+    }else {
+      mobile.value = false;
+      mobileNav.value = false;
+    }
+
+    }
+  
     return {
       mobile,
       mobileNav,
       windowWidth,
+      toggleMobileNav,
+      closeMobileNav,
+      checkScreen
    }
   }
 }
