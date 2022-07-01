@@ -40,20 +40,20 @@
 
 
 <script>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 export default {
   name: "Navigation",
-  created() {
-    window.addEventListener("resize", this.checkScreen);
-    this.checkScreen();
-    },
 
   setup() {
     const mobile = ref(null)
     const mobileNav = ref(null)
     const windowWidth = ref(null)
 
+  onMounted (() => {
+    window.addEventListener("resize", checkScreen);
+    checkScreen();
+    })
     function toggleMobileNav() {
     mobileNav.value = !mobileNav.value
     }
@@ -254,7 +254,8 @@ i:hover{
   display: flex;
   flex-direction: columns;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
   color: var(--gainsboro);
 }
 
