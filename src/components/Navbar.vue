@@ -3,10 +3,7 @@
 <header>
   <nav class="nav-header">
     <ul v-show="!mobile" class="navigation">
-      <li><router-link class="nav-link" :to="{ name: 'Home'}">Home</router-link></li>
-      <li><router-link class="nav-link" :to="{ name: 'About'}">About</router-link></li>
-      <li><router-link class="nav-link" :to="{ name: 'Porfolio'}">Porfolio</router-link></li>
-      <li><router-link class="nav-link" :to="{ name: 'Contact'}">Contact</router-link></li>
+      <li v-for="{name, label} in links" :key="label"><router-link class="nav-link" :to="{ name }">{{label}}</router-link></li>
     </ul>
     <div class="icon">
       <i @click="toggleMobileNav" 
@@ -15,40 +12,36 @@
       :class="{'icon-active' : mobileNav }"></i>
     </div>
     <transition name="mobile-nav">
-      <ul v-show="mobileNav" class="dropdown-nav">
+      <div v-show="mobileNav" class="dropdown-nav">
         <div class="brand">
           <img src="../assets/logo.png" alt="" class="logo">
           <h2 class="brand-text">Welcome to this project </h2>
         </div>
         <i @click="closeMobileNav" class="far fa-times-circle close-icon"></i>
         <div class="nav-box">
-          <li><router-link class="mobile-nav-link" :to="{ name: 'Home'}"
-          @click="closeMobileNav" >Home</router-link></li>
-          <li><router-link class="mobile-nav-link" :to="{ name: 'About'}" 
-          @click="closeMobileNav" >About</router-link></li>
-          <li><router-link class="mobile-nav-link" :to="{ name: 'Porfolio'}"  
-          @click="closeMobileNav" >Porfolio</router-link></li>
-          <li><router-link class="mobile-nav-link" :to="{ name: 'Contact'}" 
-          @click="closeMobileNav" >Contact</router-link></li>
+          <ul @click="closeMobileNav">
+          <li v-for="{name, label} in links" :key="label"><router-link class="mobile-nav-link" :to="{ name }">{{label}}</router-link></li>
+          </ul>
         </div>
       <div class="outsideOfNav" @click="closeMobileNav"></div>
-     </ul>
+     </div>
     </transition>
   </nav>
 </header>
 </template>
 
-
-<script>
+<script setup>
 import { ref, onMounted } from 'vue';
 
-export default {
-name: "Navigation",
-
-setup() {
 const mobile = ref(null)
 const mobileNav = ref(null)
 const windowWidth = ref(null)
+const links = ref([
+{ name: 'Home', label: 'Home', },
+{ name: 'About', label: 'About', },
+{ name: 'Porfolio', label: 'Porfolio', },
+{ name: 'Contact', label: 'Contact', },
+]);
 
 onMounted (() => {
   window.addEventListener("resize", checkScreen);
@@ -69,16 +62,6 @@ function checkScreen() {
     {
 mobile.value = false;
 mobileNav.value = false;
-  }
-}
-return {
-mobile,
-mobileNav,
-windowWidth,
-toggleMobileNav,
-closeMobileNav,
-checkScreen
-    }
   }
 }
 </script>
@@ -207,9 +190,10 @@ i:hover{
 
 .dropdown-nav .close-icon {
   position: absolute;
-  color: var(--eerie-black-dark);
+  font-size: 1.2rem;
+  color: var(--jet);
   right: 10vw;
-  top: 10vh;
+  top: 12vh;
   z-index: 1;
 }
 
@@ -236,9 +220,16 @@ i:hover{
   left: 0;
 }
 
+.nav-box ul {
+  position: relative;
+  width: fit-content;
+}
+
 a.mobile-nav-link{
   color: var(--gainsboro);
-  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
   transition: .5s ease all;
   padding: 1rem, 1rem 4px 1rem;
   border-bottom: 1px solid transparent;
@@ -252,13 +243,12 @@ a.mobile-nav-link:hover {
 }
 
 .outsideOfNav {
-  filter: blur(7.825rem);
   height: 90vh;
   width: 20vw;
   position: absolute;
   right: 0;
   bottom: 0;
-  background-color: rgba(101, 113, 87, 0.8);
+ background: rgba(0, 0, 0, .0);
 }
 
 .mobile-nav-enter-active {
@@ -266,7 +256,7 @@ a.mobile-nav-link:hover {
 }
 
 .mobile-nav-leave-active {
-  transition: .25s ease all;
+  transition: .2s ease all;
 }
 
 .mobile-nav-enter-from,

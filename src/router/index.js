@@ -8,6 +8,10 @@ const routes = [
     component: Home
   },
   {
+    path: '/:pathMatch(.*)*',
+    redirect: "/",
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
